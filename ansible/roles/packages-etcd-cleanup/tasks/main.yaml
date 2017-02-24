@@ -1,0 +1,18 @@
+---
+    # remove YUM packages
+  - name: remove kismatic-etcd yum package
+    yum: name=kismatic-etcd state=absent
+    register: result
+    until: result|success
+    retries: 1
+    delay: 1
+    when: "ansible_os_family == 'RedHat' and 'etcd' in group_names"
+
+    # remove DEB packages
+  - name: remove kismatic-etcd etcd deb package
+    apt: name=kismatic-etcd state=absent
+    register: result
+    until: result|success
+    retries: 1
+    delay: 1
+    when: "ansible_os_family == 'Debian' and 'etcd' in group_names"

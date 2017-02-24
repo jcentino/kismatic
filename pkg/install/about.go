@@ -7,6 +7,7 @@ import (
 	"strings"
 
 	"github.com/apprenda/kismatic/pkg/ssh"
+	"github.com/apprenda/kismatic/pkg/util"
 )
 
 type KismaticInfo struct {
@@ -48,7 +49,7 @@ func SetVersion(polyVersion string) {
 
 }
 
-// Returns true if the provided version is older than the current Kismatic version
+// IsOlderVersion returns true if the provided version is older than the current Kismatic version
 func IsOlderVersion(that Version) bool {
 	this := AboutKismatic.ShortVersion
 	return this.isNewerThan(that)
@@ -125,4 +126,17 @@ func ListVersions(plan *Plan) (ClusterVersion, error) {
 
 func (v Version) String() string {
 	return fmt.Sprintf("%v.%v.%v", v.Major, v.Minor, v.Patch)
+}
+
+// NodesWithRoles returns a filtered list of ListableNode slice based on the node's roles
+func NodesWithRoles(nodes []ListableNode, roles ...string) []ListableNode {
+	var subset []ListableNode
+	for _, need := range roles {
+		for _, n := range nodes {
+			if util.Subset([]string{need}, n.Roles) {
+				subset = append(subset, n)
+			}
+		}
+	}
+	return subset
 }

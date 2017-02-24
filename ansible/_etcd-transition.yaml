@@ -1,0 +1,17 @@
+---
+  - hosts: etcd
+    any_errors_fatal: true
+    name: "Temporarily Install Transtion Etcd 3.x version"
+    serial: 1 # need to always do this serially
+    remote_user: root
+    become_method: sudo
+    vars_files:
+      - group_vars/all.yaml
+      - group_vars/etcd-networking.yaml
+
+    roles:
+      - role: packages-transition-etcd
+        when: allow_package_installation|bool == true
+      - etcd-backup
+      - role: etcd
+        etcd_install_bin_name: etcd_v3_0

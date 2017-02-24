@@ -106,15 +106,15 @@ const defaultRuleSet = `---
 - kind: PackageDependency
   when: ["etcd", "ubuntu"]
   packageName: etcd
-  packageVersion: 3.1.0
+  packageVersion: 3.1.1
 - kind: PackageDependency
   when: ["master","ubuntu"]
   packageName: kubelet
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["master","ubuntu"]
   packageName: kubectl
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["master","ubuntu"]
   packageName: docker-engine
@@ -122,7 +122,7 @@ const defaultRuleSet = `---
 - kind: PackageDependency
   when: ["master","ubuntu", "disconnected"]
   packageName: kismatic-offline
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["worker","ubuntu"]
   packageName: docker-engine
@@ -138,28 +138,28 @@ const defaultRuleSet = `---
 - kind: PackageDependency
   when: ["worker","ubuntu"]
   packageName: kubelet
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["ingress","ubuntu"]
   packageName: kubelet
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["storage","ubuntu"]
   packageName: kubelet
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 
 - kind: PackageDependency
   when: ["etcd", "centos"]
   packageName: etcd
-  packageVersion: 3.1.0-1
+  packageVersion: 3.1.1-1
 - kind: PackageDependency
   when: ["master","centos"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["master","centos"]
   packageName: kubectl
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["master","centos"]
   packageName: docker-engine
@@ -167,7 +167,7 @@ const defaultRuleSet = `---
 - kind: PackageDependency
   when: ["master","centos", "disconnected"]
   packageName: kismatic-offline
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["worker","centos"]
   packageName: docker-engine
@@ -183,28 +183,28 @@ const defaultRuleSet = `---
 - kind: PackageDependency
   when: ["worker","centos"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["ingress","centos"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["storage","centos"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 
 - kind: PackageDependency
   when: ["etcd", "rhel"]
   packageName: etcd
-  packageVersion: 3.1.0-1
+  packageVersion: 3.1.1-1
 - kind: PackageDependency
   when: ["master","rhel"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["master","rhel"]
   packageName: kubectl
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["master","rhel"]
   packageName: docker-engine
@@ -212,7 +212,7 @@ const defaultRuleSet = `---
 - kind: PackageDependency
   when: ["master","rhel", "disconnected"]
   packageName: kismatic-offline
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["worker","centos"]
   packageName: docker-engine
@@ -228,15 +228,15 @@ const defaultRuleSet = `---
 - kind: PackageDependency
   when: ["worker","rhel"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["ingress","rhel"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["storage","rhel"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 
 # Gluster packages
 - kind: PackageDependency
@@ -307,15 +307,15 @@ const upgradeRuleSet = `---
 - kind: PackageDependency
   when: ["etcd", "ubuntu"]
   packageName: etcd
-  packageVersion: 3.1.0
+  packageVersion: 3.1.1
 - kind: PackageDependency
   when: ["master","ubuntu"]
   packageName: kubelet
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["master","ubuntu"]
   packageName: kubectl
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["master","ubuntu"]
   packageName: docker-engine
@@ -323,7 +323,7 @@ const upgradeRuleSet = `---
 - kind: PackageDependency
   when: ["master","ubuntu", "disconnected"]
   packageName: kismatic-offline
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["worker","ubuntu"]
   packageName: docker-engine
@@ -339,40 +339,40 @@ const upgradeRuleSet = `---
 - kind: PackageDependency
   when: ["worker","ubuntu"]
   packageName: kubelet
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["ingress","ubuntu"]
   packageName: kubelet
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["storage","ubuntu"]
   packageName: kubelet
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["worker","ubuntu"]
   packageName: kubectl
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["ingress","ubuntu"]
   packageName: kubectl
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 - kind: PackageDependency
   when: ["storage","ubuntu"]
   packageName: kubectl
-  packageVersion: 1.5.2-4
+  packageVersion: 1.5.3-1
 
 - kind: PackageDependency
   when: ["etcd", "centos"]
   packageName: etcd
-  packageVersion: 3.1.0-1
+  packageVersion: 3.1.1-1
 - kind: PackageDependency
   when: ["master","centos"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["master","centos"]
   packageName: kubectl
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["master","centos"]
   packageName: docker-engine
@@ -380,7 +380,7 @@ const upgradeRuleSet = `---
 - kind: PackageDependency
   when: ["master","centos", "disconnected"]
   packageName: kismatic-offline
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["worker","centos"]
   packageName: docker-engine
@@ -396,40 +396,40 @@ const upgradeRuleSet = `---
 - kind: PackageDependency
   when: ["worker","centos"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["ingress","centos"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["storage","centos"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["worker","centos"]
   packageName: kubectl
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["ingress","centos"]
   packageName: kubectl
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["storage","centos"]
   packageName: kubectl
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 
 - kind: PackageDependency
   when: ["etcd", "rhel"]
   packageName: etcd
-  packageVersion: 3.1.0-1
+  packageVersion: 3.1.1-1
 - kind: PackageDependency
   when: ["master","rhel"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["master","rhel"]
   packageName: kubectl
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["master","rhel"]
   packageName: docker-engine
@@ -437,7 +437,7 @@ const upgradeRuleSet = `---
 - kind: PackageDependency
   when: ["master","rhel", "disconnected"]
   packageName: kismatic-offline
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["worker","centos"]
   packageName: docker-engine
@@ -453,27 +453,27 @@ const upgradeRuleSet = `---
 - kind: PackageDependency
   when: ["worker","rhel"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["ingress","rhel"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["storage","rhel"]
   packageName: kubelet
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["worker","rhel"]
   packageName: kubectl
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["ingress","rhel"]
   packageName: kubectl
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 - kind: PackageDependency
   when: ["storage","rhel"]
   packageName: kubectl
-  packageVersion: 1.5.2_4-1
+  packageVersion: 1.5.3_1-1
 
 # Gluster packages
 - kind: PackageDependency

@@ -1,0 +1,8 @@
+---
+  - include: _packages-etcd-cleanup.yaml
+    when: allow_package_installation|bool == true
+  - include: _packages.yaml
+    when: allow_package_installation|bool == true
+
+  #etcd
+  - include: _etcd-transition.yaml upgrading=true

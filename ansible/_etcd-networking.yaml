@@ -10,5 +10,4 @@
       - group_vars/etcd-networking.yaml
 
     roles:
-      - etcd-cert
       - etcd
