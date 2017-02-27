@@ -1,7 +1,7 @@
 ---
   - include: _packages-cleanup.yaml
     when: allow_package_installation|bool == true
-  - include: _packages.yaml
+  - include: _packages-repo.yaml
     when: allow_package_installation|bool == true
 
   # docker
