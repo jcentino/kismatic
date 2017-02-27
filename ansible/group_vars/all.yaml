@@ -3,6 +3,7 @@
 kubernetes_version: v1.5.3
 kismatic_yum_version: 1.5.3_1-1
 kismatic_apt_version: 1.5.3-1
+etcd_version: 3.1.1
 etcd_yum_version: 3.1.1-1
 etcd_apt_version: 3.1.1
 transition_etcd_yum_version: 3.0.17-1

@@ -32,25 +32,9 @@
     retries: 1
     delay: 1
 
-  - name: remove etcd yum package
-    yum: name=etcd state=absent
-    when: "ansible_os_family == 'RedHat' and 'etcd' in group_names"
-    register: result
-    until: result|success
-    retries: 1
-    delay: 1
-
   - name: remove transition-etcd yum package
     yum: name=transition-etcd-{{ transition_etcd_yum_version }} state=absent
     when: "ansible_os_family == 'RedHat'"
-    register: result
-    until: result|success
-    retries: 1
-    delay: 1
-
-  - name: remove kismatic-etcd yum package
-    yum: name=kismatic-etcd state=absent
-    when: "ansible_os_family == 'RedHat' and 'etcd' in group_names"
     register: result
     until: result|success
     retries: 1
@@ -89,25 +73,9 @@
     retries: 1
     delay: 1
 
-  - name: remove etcd etcd deb package
-    apt: name=etcd state=absent
-    when: "ansible_os_family == 'Debian' and 'etcd' in group_names"
-    register: result
-    until: result|success
-    retries: 1
-    delay: 1
-
   - name: remove transition-etcd deb package
     apt: name=transition-etcd={{transition_etcd_apt_version}} state=absent
     when: "ansible_os_family == 'Debian'"
-    register: result
-    until: result|success
-    retries: 1
-    delay: 1
-
-  - name: remove kismatic-etcd etcd deb package
-    apt: name=kismatic-etcd state=absent
-    when: "ansible_os_family == 'Debian' and 'etcd' in group_names"
     register: result
     until: result|success
     retries: 1

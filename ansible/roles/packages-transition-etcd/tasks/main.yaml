@@ -19,3 +19,11 @@
     retries: 3
     delay: 3
     when: ansible_os_family == 'Debian'
+
+  # required until https://github.com/ansible/ansible/issues/14804
+  - name: install curl package
+    package: name=curl state=present
+    register: curl_installation_rpm
+    until: curl_installation_rpm|success
+    retries: 3
+    delay: 3
