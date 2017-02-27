@@ -135,7 +135,7 @@ func doUpgrade(out io.Writer, opts *upgradeOpts) error {
 		fmt.Fprintln(out, "All nodes are at the target version. Skipping node upgrades.")
 	} else {
 		if err = upgradeNodes(out, *plan, *opts, toUpgrade, executor); err != nil {
-			return fmt.Errorf("Failed to upgrade nodes: %v", err)
+			return err
 		}
 	}
 
