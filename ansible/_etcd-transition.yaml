@@ -18,3 +18,4 @@
       - role: etcd-backup
       - role: etcd
         etcd_install_bin_name: etcd_v3_0
+        etcdctl_install_bin_name: etcdctl_v3_0
