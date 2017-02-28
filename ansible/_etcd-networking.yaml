@@ -10,4 +10,6 @@
       - group_vars/etcd-networking.yaml
 
     roles:
+      - role: etcd-backup
+        when: etcd_needs_upgrade is defined and etcd_needs_upgrade|bool == true
       - etcd
