@@ -105,6 +105,19 @@ const defaultRuleSet = `---
 
 - kind: PackageDependency
   when: ["etcd", "ubuntu"]
+  packageName: curl
+  anyVersion: true
+- kind: PackageDependency
+  when: ["etcd", "centos"]
+  packageName: curl
+  anyVersion: true
+- kind: PackageDependency
+  when: ["etcd", "rhel"]
+  packageName: curl
+  anyVersion: true
+
+- kind: PackageDependency
+  when: ["etcd", "ubuntu"]
   packageName: etcd
   packageVersion: 3.1.1
 - kind: PackageDependency
@@ -303,6 +316,19 @@ const upgradeRuleSet = `---
 - kind: FreeSpace
   path: /
   minimumBytes: 1000000000
+
+- kind: PackageDependency
+  when: ["etcd", "ubuntu"]
+  packageName: curl
+  anyVersion: true
+- kind: PackageDependency
+  when: ["etcd", "centos"]
+  packageName: curl
+  anyVersion: true
+- kind: PackageDependency
+  when: ["etcd", "rhel"]
+  packageName: curl
+  anyVersion: true
 
 - kind: PackageDependency
   when: ["etcd", "ubuntu"]
