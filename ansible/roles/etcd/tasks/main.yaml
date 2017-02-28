@@ -18,9 +18,10 @@
       - restart etcd service
     when: >
       (force_etcd_restart is defined and force_etcd_restart|bool == true) or
-      ((etcd_installation_rpm is defined and etcd_installation_rpm.changed == true or etcd_installation_deb is defined and etcd_installation_deb.changed == true) and
-      (upgrading is defined and upgrading|bool == true))
-
+      ((upgrading is defined and upgrading|bool == true) and
+      ((etcd_installation_rpm is defined and etcd_installation_rpm.changed == true) or
+      (etcd_installation_deb is defined and etcd_installation_deb.changed == true)))
+      
   - meta: flush_handlers  #Run handlers
 
     #TODO don't use a timeout
@@ -28,8 +29,9 @@
     pause: seconds=15
     when: >
       (force_etcd_restart is defined and force_etcd_restart|bool == true) or
-      ((etcd_installation_rpm is defined and etcd_installation_rpm.changed == true or etcd_installation_deb is defined and etcd_installation_deb.changed == true) and
-      (upgrading is defined and upgrading|bool == true))
+      ((upgrading is defined and upgrading|bool == true) and
+      ((etcd_installation_rpm is defined and etcd_installation_rpm.changed == true) or
+      (etcd_installation_deb is defined and etcd_installation_deb.changed == true)))
 
   - name: verify {{ etcd_install_bin_name }} is running
     command: systemctl status {{ etcd_service_name }}
