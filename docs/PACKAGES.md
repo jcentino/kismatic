@@ -43,7 +43,7 @@ EOF
 | Product | Install Command |
 | --- | --- | --- |
 | Etcd | `sudo apt-get -y -t=kismatic-xenial  install etcd=3.1.1` |
-| Kubernetes Node | `sudo apt-get -y -t=kismatic-xenial install docker=1.11.2-0~xenial kubelet=1.5.3-1 kubectl=1.5.3-1` |
+| Kubernetes Node | `sudo apt-get -y -t=kismatic-xenial install docker-engine=1.11.2-0~xenial kubelet=1.5.3-1 kubectl=1.5.3-1` |
 
 # <a name="synclocal"></a>Synchronizing a local repo
 
