@@ -22,7 +22,7 @@ import (
 // environment defined in the plan file
 type PreFlightExecutor interface {
 	RunPreFlightCheck(*Plan) error
-	RunUpgradePreFlightCheck(*Plan) error
+	RunUpgradePreFlightCheck(*Plan, ListableNode) error
 }
 
 // The Executor will carry out the installation plan
@@ -260,7 +260,7 @@ func (ae *ansibleExecutor) RunPreFlightCheck(p *Plan) error {
 	return ae.execute(t)
 }
 
-func (ae *ansibleExecutor) RunUpgradePreFlightCheck(p *Plan) error {
+func (ae *ansibleExecutor) RunUpgradePreFlightCheck(p *Plan, node ListableNode) error {
 	inventory := buildInventoryFromPlan(p)
 	pwd, err := os.Getwd()
 	if err != nil {
@@ -280,6 +280,7 @@ func (ae *ansibleExecutor) RunUpgradePreFlightCheck(p *Plan) error {
 		plan:           *p,
 		inventory:      inventory,
 		clusterCatalog: *cc,
+		limit:          []string{node.Node.Host},
 	}
 	return ae.execute(t)
 }
@@ -378,11 +379,11 @@ func (ae *ansibleExecutor) UpgradeNodes(plan Plan, nodesToUpgrade []ListableNode
 	for _, nodeToUpgrade := range nodesToUpgrade {
 		for _, role := range nodeToUpgrade.Roles {
 			if role == "etcd" {
-				node := nodeToUpgrade.Node
+				node := nodeToUpgrade
 				if err := ae.upgradeNode(plan, node, onlineUpgrade); err != nil {
-					return fmt.Errorf("error upgrading node %q: %v", node.Host, err)
+					return fmt.Errorf("error upgrading node %q: %v", node.Node.Host, err)
 				}
-				upgradedNodes[node.IP] = true
+				upgradedNodes[node.Node.IP] = true
 				break
 			}
 		}
@@ -395,11 +396,11 @@ func (ae *ansibleExecutor) UpgradeNodes(plan Plan, nodesToUpgrade []ListableNode
 		}
 		for _, role := range nodeToUpgrade.Roles {
 			if role == "master" {
-				node := nodeToUpgrade.Node
+				node := nodeToUpgrade
 				if err := ae.upgradeNode(plan, node, onlineUpgrade); err != nil {
-					return fmt.Errorf("error upgrading node %q: %v", node.Host, err)
+					return fmt.Errorf("error upgrading node %q: %v", node.Node.Host, err)
 				}
-				upgradedNodes[node.IP] = true
+				upgradedNodes[node.Node.IP] = true
 				break
 			}
 		}
@@ -412,11 +413,11 @@ func (ae *ansibleExecutor) UpgradeNodes(plan Plan, nodesToUpgrade []ListableNode
 		}
 		for _, role := range nodeToUpgrade.Roles {
 			if role != "etcd" && role != "master" {
-				node := nodeToUpgrade.Node
+				node := nodeToUpgrade
 				if err := ae.upgradeNode(plan, node, onlineUpgrade); err != nil {
-					return fmt.Errorf("error upgrading node %q: %v", node.Host, err)
+					return fmt.Errorf("error upgrading node %q: %v", node.Node.Host, err)
 				}
-				upgradedNodes[node.IP] = true
+				upgradedNodes[node.Node.IP] = true
 				break
 			}
 		}
@@ -424,7 +425,7 @@ func (ae *ansibleExecutor) UpgradeNodes(plan Plan, nodesToUpgrade []ListableNode
 	return nil
 }
 
-func (ae *ansibleExecutor) upgradeNode(plan Plan, node Node, onlineUpgrade bool) error {
+func (ae *ansibleExecutor) upgradeNode(plan Plan, node ListableNode, onlineUpgrade bool) error {
 	inventory := buildInventoryFromPlan(&plan)
 	cc, err := ae.buildClusterCatalog(&plan)
 	if err != nil {
@@ -438,9 +439,9 @@ func (ae *ansibleExecutor) upgradeNode(plan Plan, node Node, onlineUpgrade bool)
 		clusterCatalog: *cc,
 		plan:           plan,
 		explainer:      ae.defaultExplainer(),
-		limit:          []string{node.Host},
+		limit:          []string{node.Node.Host},
 	}
-	util.PrintHeader(ae.stdout, fmt.Sprintf("Upgrade Node %q", node.Host), '=')
+	util.PrintHeader(ae.stdout, fmt.Sprintf("Upgrade: %s %s", node.Node.Host, node.Roles), '=')
 	return ae.execute(t)
 }
 
